@@ -29,7 +29,7 @@ sudo systemctl restart sshd
 ### Step-by-Step Guide In the Local (Hidden Behind the Firewall)
   On your private local server, (behind the firewall), run the following command to establish the persistent reverse tunnel to the remote server: 
   
-1. Add or modify the GatewayPorts line to yes
+1. Run the command below as shown format
 ```sh
 ssh -R [remote-port]:localhost:[local-mysql-port] [user]@[remote-host-ip] -N
 ```
