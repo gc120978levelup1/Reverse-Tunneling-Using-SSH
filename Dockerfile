@@ -4,7 +4,6 @@
 FROM lscr.io/linuxserver/openssh-server:latest
 RUN apt update -y
 RUN apt-get update -y
-RUN --rm -it --entrypoint /keygen.sh linuxserver/openssh-server
 
 # mysql port
 EXPOSE 3306
