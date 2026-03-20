@@ -37,7 +37,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Configure SSH
-RUN mkdir /var/run/sshd
+# RUN mkdir /var/run/sshd
 # Replace 'password' with a secure password
 RUN echo 'root:password' | chpasswd
 # Allow root login via SSH (use with caution)
