@@ -1,29 +1,24 @@
-# Access me like this
-# ssh -i /path/to/private/key -p PORT USER_NAME@SERVERIP
+FROM ubuntu:latest
 
-FROM lscr.io/linuxserver/openssh-server:latest
+# Install Apache and OpenSSH Server
+RUN apt-get update && apt-get install -y \
+    apache2 \
+    openssh-server \
+    && rm -rf /var/lib/apt/lists/*
 
-# web port
-EXPOSE 80
+# Configure SSH
+RUN mkdir /var/run/sshd
+# Replace 'password' with a secure password
+RUN echo 'root:password' | chpasswd
+# Allow root login via SSH (use with caution)
+RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
-# mysql port
-EXPOSE 3306
+# Copy the startup script
+COPY start.sh /start.sh
 
-# mysql pgsql
-EXPOSE 5432
+# Expose ports for Web (80) and SSH (22)
+EXPOSE 80 22 3306 5432 1433 20000 502
 
-# mssql port
-EXPOSE 1433
-
-# web server port
-EXPOSE 80
-
-# dnp3 port
-EXPOSE 20000
-
-# modbus port
-EXPOSE 502
-
-# ssh port
-EXPOSE 22
+# Start both services using the script
+CMD ["/start.sh"]
 
