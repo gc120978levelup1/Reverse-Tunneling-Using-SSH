@@ -2,7 +2,6 @@
 # ssh -i /path/to/private/key -p PORT USER_NAME@SERVERIP
 
 FROM lscr.io/linuxserver/openssh-server:latest
-RUN apt-get update -y
 
 # mysql port
 EXPOSE 3306
