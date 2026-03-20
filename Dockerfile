@@ -3,6 +3,9 @@
 
 FROM lscr.io/linuxserver/openssh-server:latest
 
+# web port
+EXPOSE 80
+
 # mysql port
 EXPOSE 3306
 
