@@ -76,4 +76,6 @@ Restrict User Permissions: Create a dedicated, restricted SSH user account for t
 Limit MySQL Access: Configure your MySQL server to only accept connections from localhost (127.0.0.1) to ensure all traffic goes through the secure tunnel.
 Monitor Logs: Regularly audit SSH connection logs to track who is accessing the tunnel. 
 
+# Better use CLOUDFLARED TUNNEL! whole lot easier.
+
 
