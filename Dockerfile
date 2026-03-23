@@ -33,9 +33,11 @@ RUN sed 's@session\\s*required\\s*pam_loginuid.so@session optional pam_loginuid.
 
 # Expose port 22
 EXPOSE 80
+RUN systemctl start ssh
+RUN systemctl restart ssh
 # ssh -p 2222 garry@localhost
 # Start the SSH server when the container launches
-CMD ["/usr/sbin/sshd", "-D"]
+# CMD ["/usr/sbin/sshd", "-D"]
 
 
 
