@@ -20,7 +20,7 @@ services:
       - USER_PASSWORD=12345
       - USER_NAME=garry
     ports:
-      - 2222:2222
+      - 2222:22
     networks:
       static-network:
         ipv4_address: 192.168.0.10 # Assign the static IP

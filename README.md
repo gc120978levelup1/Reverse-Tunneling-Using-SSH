@@ -101,6 +101,13 @@ scp -P 2222 garry@localhost:2222:/etc/ssh/sshd_config sshd_config
 
 ```
 
+Check listening port
+```sh
+sudo netstat -tunlp
+
+```
+
+
 # Better use CLOUDFLARED TUNNEL! whole lot easier.
 
 
