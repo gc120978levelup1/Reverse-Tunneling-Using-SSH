@@ -6,6 +6,21 @@ Clone me
 git clone --recursive https://github.com/gc120978levelup1/Reverse-Tunneling-Using-SSH.git
 ```
 
+Remove Docker Contaners and Neworks and Install  laravel and node dependencies
+```sh
+docker ps -aq | xargs docker stop | xargs docker rm
+docker system prune -f
+git clone --recursive https://github.com/gc120978levelup1/ss_LAMP_Docker.git
+cd ss_LAMP_DOCKER
+./ss merge
+cd ..
+```
+
+Remove Docker Contaners and Neworks and Install  laravel and node dependencies
+```sh
+./ss up
+```
+
 You can expose your MySQL server to the internet using a reverse SSH tunnel, which securely forwards traffic from a public remote server to your local machine (behind a firewall). This requires a public "jump host" that is accessible from the internet.
 
 ### Prerequisites
