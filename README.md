@@ -1,6 +1,11 @@
 # Reverse-Tunneling-Using-SSH
 It enables a local database server to be accessed  from the internet
 
+Clone me
+```sh
+git clone --recursive https://github.com/gc120978levelup1/Reverse-Tunneling-Using-SSH.git
+```
+
 You can expose your MySQL server to the internet using a reverse SSH tunnel, which securely forwards traffic from a public remote server to your local machine (behind a firewall). This requires a public "jump host" that is accessible from the internet.
 
 ### Prerequisites
