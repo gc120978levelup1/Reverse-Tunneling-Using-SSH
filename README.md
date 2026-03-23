@@ -6,13 +6,10 @@ Clone me
 git clone --recursive https://github.com/gc120978levelup1/Reverse-Tunneling-Using-SSH.git
 ```
 
-Remove Docker Contaners and Neworks and Install  laravel and node dependencies
+Remove Docker Containers and Neworks
 ```sh
 docker ps -aq | xargs docker stop | xargs docker rm
 docker system prune -f
-git clone --recursive https://github.com/gc120978levelup1/ss_LAMP_Docker.git
-cd ss_LAMP_DOCKER
-./ss merge
 cd ..
 ```
 
@@ -98,9 +95,10 @@ Monitor Logs: Regularly audit SSH connection logs to track who is accessing the 
 
 ------------------------------------------------------------------
 
-Copy a file from host to local
+Copy a file from host to local (assuming port 2222 is open)
 ```sh
-scp username@remote_host:/path/on/remote/server/file_to_copy /path/on/local/machine/
+scp -P 2222 garry@localhost:2222:/etc/ssh/sshd_config sshd_config
+
 ```
 
 # Better use CLOUDFLARED TUNNEL! whole lot easier.
