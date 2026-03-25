@@ -33,6 +33,9 @@ COPY sshd_config /etc/ssh/
 RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed 's@session\\s*required\\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 
+# Enable open-ssh server
+RUN systemctl enable ssh
+
 # Expose ports
 EXPOSE 2222 20000-30000
 
