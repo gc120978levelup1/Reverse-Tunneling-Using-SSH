@@ -11,9 +11,9 @@
 
 Include /etc/ssh/sshd_config.d/*.conf
 
-Port 80
+Port 2222
 #AddressFamily any
-#ListenAddress 0.0.0.0
+ListenAddress 0.0.0.0
 #ListenAddress ::
 
 #HostKey /etc/ssh/ssh_host_rsa_key
@@ -103,7 +103,7 @@ PrintMotd no
 #UseDNS no
 #PidFile /run/sshd.pid
 #MaxStartups 10:30:100
-PermitTunnel no
+PermitTunnel yes
 #ChrootDirectory none
 #VersionAddendum none
 
