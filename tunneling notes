@@ -1,36 +1,21 @@
 [Web App]
 
 [@main server]
-centerbeam.proxy.rlwy.net:26873
-protective-imagination.railway.internal:2222
+centerbeam.proxy.rlwy.net:26873 (external)
+protective-imagination.railway.internal:2222 (internal)
 to access:
 ssh garry@centerbeam.proxy.rlwy.net -p 26873
 netstat -tulpn
 
-[@MYPC]
+[@MYPC] - the site with the server (192.168.1.150:3306)
 issued command: @MYPC
- ssh -vv -R 33601:localhost:33601 garry@centerbeam.proxy.rlwy.net -p 26873 -N -f
- ssh -vv -L 5555:protective-imagination.railway.internal:33601 garry@centerbeam.proxy.rlwy.net -p 26873 -N -f
- ssh -vvv -L 7777:protective-imagination.railway.internal:33601 garry@centerbeam.proxy.rlwy.net -p 26873 -N -f
+ ssh -vvv -R 30000:192.168.1.150:3306 garry@centerbeam.proxy.rlwy.net -p 26873 -N -f
 
-
-[@jump server1]
-hopper.proxy.rlwy.net:14766
-openssh-server.railway.internal:2222
-to access command:
- ssh garry@hopper.proxy.rlwy.net -p 14766
-issued command: @MYPC
- ssh -L 33601:protective-imagination.railway.internal:33601 garry@protective-imagination.railway.internal -p 2222 -N -f
- ssh -L 33601:protective-imagination.railway.internal:33601 garry@protective-imagination.railway.internal -p 2222 -N -f
-
-
-[@Lotlot pc]
+[@Lotlot pc] - the other site that wants to contact the server
 issued command:
- ssh -vv -L 5555:protective-imagination.railway.internal:33601 garry@hopper.proxy.rlwy.net -p 14766 -N -f
-http://localhost:5555/
+ ssh -vvv -L 3306:protective-imagination.railway.internal:30000 garry@centerbeam.proxy.rlwy.net -p 26873 -N -f
+0.0.0.0:3306 (its as if [@Lotlot pc] becomes the server on this site
 
- ssh -L 33601:hopper.proxy.rlwy.net:33601 garry@hopper.proxy.rlwy.net -p 14766 -N -f
-
+ssh -L 33601:hopper.proxy.rlwy.net:33601 garry@hopper.proxy.rlwy.net -p 14766 -N -f
 ssh -L [local_addr:]local_port:remote_addr:remote_port [user@]sshd_addr
-
 ssh -R [remote_addr:]remote_port:local_addr:local_port [user@]gateway_addr
