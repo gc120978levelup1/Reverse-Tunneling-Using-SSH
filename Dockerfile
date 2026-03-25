@@ -17,27 +17,27 @@ FROM debian:stable
 
 # Install OpenSSH server and create the necessary directory
 RUN apt-get update 
-RUN apt-get install -y openssh-server sudo net-tools
+RUN apt-get install -y openssh-server sudo net-tools iproute2 iputils-ping
 
 # Set the root password (replace 'your_password' with your desired password)
-# RUN echo 'root:your_password' | chpasswd
 RUN echo 'root:12345' | chpasswd
 RUN adduser garry
 RUN echo 'garry:12345' | chpasswd
 RUN usermod -aG sudo garry
+RUN adduser nestor
+RUN echo 'nestor:12345' | chpasswd
+RUN usermod -aG sudo nestor
 
 # Allow root login via SSH (necessary for password-based login in a container environment)
 COPY sshd_config /etc/ssh/
 RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed 's@session\\s*required\\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 
-# Expose port 22
-EXPOSE 80
-RUN systemctl start ssh
-RUN systemctl restart ssh
-# ssh -p 2222 garry@localhost
+# Expose ports
+EXPOSE 2222 20000-30000
+
 # Start the SSH server when the container launches
-# CMD ["/usr/sbin/sshd", "-D"]
+CMD ["/usr/sbin/sshd", "-D"]
 
 
 
